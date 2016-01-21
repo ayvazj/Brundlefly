@@ -16,7 +16,7 @@ The following layer types/objects are supported:
 
 ## Download
 ### Export Script
-[brundlefly-export.jsx](https://raw.githubusercontent.com/ayvazj/brundlefly/master/build/brundlefly-export.jsx)
+[brundlefly-export.jsx](https://raw.githubusercontent.com/ayvazj/brundlefly/master/dist/brundlefly-export.jsx)
 
 ## Usage
 In After Effects, open and select the composition you want to export and
