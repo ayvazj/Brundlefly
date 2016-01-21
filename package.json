@@ -1,0 +1,11 @@
+{
+  "name": "brundlefly",
+  "version": "0.1.0",
+  "main": "dist/brundlefly.jsx",
+  "author": "James Ayvaz <james.ayvaz@gmail.com>",
+  "devDependencies": {
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-string-replace": "^1.0.0"
+  }
+}
