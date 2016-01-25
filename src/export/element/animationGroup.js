@@ -115,7 +115,7 @@
 
         group.animations = getLayerAnimations(layer);
         // uncomment to remove props from output file (useful for debugging)
-        group.contents = contents;
+        // group.contents = contents;
     }
 
     function getParentData(layer) {

@@ -6804,6 +6804,7 @@ function parsePositionProperty(layer) {
 function parseMarkerProperty(comp, prop, id, propname, callback) {
     if (prop) {
         var duration = 0;
+        var delay = undefined;
         var keyframes = [];
         for (var i = 0; i < prop.numKeys; i++) {
             var keyTime = prop.keyTime(i + 1);
@@ -6814,6 +6815,9 @@ function parseMarkerProperty(comp, prop, id, propname, callback) {
             var keyTime = prop.keyTime(i + 1) / duration;
             var keyValue = prop.keyValue(i + 1);
 
+            if ( delay === undefined ) {
+                delay = keyTime;
+            }
             var frame = callback(i, keyTime, keyValue);
             if (frame) {
                 keyframes.push(frame);
@@ -6824,7 +6828,7 @@ function parseMarkerProperty(comp, prop, id, propname, callback) {
                 "type": "animation",
                 "id": id,
                 "duration": duration,
-                "delay": comp.delay ? comp.delay : 0,
+                "delay": delay == undefined ? 0 : delay,
                 "property": propname,
                 "keyframes": keyframes
             };
@@ -7056,7 +7060,7 @@ function getAnimationGroup(config, layer, animations) {
 
         group.animations = getLayerAnimations(layer);
         // uncomment to remove props from output file (useful for debugging)
-        group.contents = contents;
+        // group.contents = contents;
     }
 
     function getParentData(layer) {
