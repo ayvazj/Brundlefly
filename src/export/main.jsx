@@ -40,27 +40,20 @@ function main() {
 
 
 
-    var data = getComp(btfyConfig, app.project.activeItem);
-    var json = JSON.stringify(data, null, "  ");
 
     var outFile = File.saveDialog('Save the json file');
+
+
+    btfyConfig.destdir = outFile.path;
+    var data = getComp(btfyConfig, app.project.activeItem);
+    var json = JSON.stringify(data, null, "  ");
     if (outFile != null) {
         outFile.open("w", "TEXT", "????");
         outFile.write(json);
         outFile.close();
     }
-
-    btfyConfig.destdir = outFile.path;
-
-    //btfyConfig.destdir = '~/Src/github.com/ae2canvas';
-    //var outFile = new File('~/Src/github.com/ae2canvas/out.json');
-    //if (outFile != null) {
-    //    outFile.open("w", "TEXT", "????");
-    //    outFile.write(json);
-    //    outFile.close();
-    //}
     //
-    //outFile = new File('~/Src/github.com/Brundlefly/Example/btfy/sample.btfy');
+    //outFile = new File('~/Src/github.com/BrundleflyiOS/Example/btfy/sample.btfy');
     //if (outFile != null) {
     //    outFile.open("w", "TEXT", "????");
     //    outFile.write(json);

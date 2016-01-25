@@ -25,7 +25,7 @@ FileSystem.prototype.copyFolder = function(sourceFolder, destinationFolder) {
 
 FileSystem.prototype.createFolder = function(folder) {  
     if (folder.parent !== null && !folder.parent.exists) {  
-        createFolder(folder.parent);  
+        this.createFolder(folder.parent);
     }  
     folder.create();  
 }

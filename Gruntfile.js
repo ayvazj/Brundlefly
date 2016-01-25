@@ -8,6 +8,9 @@ module.exports = function (grunt) {
                     'src/export/utils/utils.js',
                     'src/export/utils/keyframes.js',
                     'src/export/utils/motionpath.js',
+                    'src/export/utils/logger.js',
+                    'src/export/utils/gl-matrix.js',
+                    'src/export/utils/filesystem.js',
 
                     'src/export/transform/transform.js',
                     'src/export/transform/anchor.js',
@@ -15,21 +18,15 @@ module.exports = function (grunt) {
                     'src/export/transform/position.js',
                     'src/export/transform/rotation.js',
                     'src/export/transform/opacity.js',
-                    'src/export/transform/skew.js',
-                    'src/export/transform/skewAxis.js',
+
 
                     'src/export/element/comp.js',
-                    'src/export/element/group.js',
-                    'src/export/element/path.js',
+                    'src/export/element/layer.js',
+                    'src/export/element/animationGroup.js',
                     'src/export/element/rect.js',
                     'src/export/element/ellipse.js',
-                    'src/export/element/polystar.js',
 
                     'src/export/element/fill.js',
-                    'src/export/element/stroke.js',
-
-                    'src/export/element/merge.js',
-                    'src/export/element/vectorTrim.js',
 
                     'src/export/property/property.js',
                     'src/export/property/staticProperty.js',

@@ -26,7 +26,7 @@
             getShapeLayer(group, layer);
             break;
         case "AVLayer":
-            getAVLayer(group, layer);
+            getAVLayer(config.destdir, group, layer);
             break;
         case "TEXT":
             getTextLayer(group, layer);
@@ -316,7 +316,7 @@
     }
 
 
-    function getAVLayer(group, layer) {
+    function getAVLayer(destdir, group, layer) {
         var comp = layer.containingComp;
         var source = layer.source;
         var layerTransform = getTransform(layer.property("ADBE Transform Group"));
@@ -433,7 +433,7 @@
         var step = 1.0; // higher values speed things up (2 means two times faster) but reduce precision
 
         group.initialValues.size = {
-            "width": rel(this.text.length * textDocument.value.fontSize * textDocument.value.horizontalScale, comp.width),
+            "width": rel(group.text.length * textDocument.value.fontSize * textDocument.value.horizontalScale, comp.width),
             "height": rel(textDocument.value.fontSize * textDocument.value.verticalScale, comp.height)
         };
 
