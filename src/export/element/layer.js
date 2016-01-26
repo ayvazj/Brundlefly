@@ -1,4 +1,4 @@
-function getLayerType(layer) {
+﻿function getLayerType(layer) {
     if (layer instanceof CameraLayer) {
         return "CAMERA";
     }
@@ -76,6 +76,42 @@ function getLayerPosition(layer, containerWidth, containerHeight) {
     };
 }
 
+function parseMarkerProperty(comp, prop, id, propname, callback) {
+
+    if (prop) {
+        var animProp = getAnimatedProperty(prop);
+        var frames = normalizeKeyframes(animProp);
+
+        if (!frames || frames.length == 0) {
+            return;
+        }
+
+        var keyframes = [];
+        var duration = (frames[frames.length-1].t - frames[0].t);
+        var delay = frames[0].t;
+
+        for (var i = 0; i < frames.length; i++) {
+            var keyTime = (frames[i].t - frames[0].t)/ duration;
+            var keyValue = frames[i].v;
+
+            var frame = callback(i+1, keyTime, keyValue);
+            if (frame) {
+                keyframes.push(frame);
+            }
+        }
+        if (keyframes.length > 0) {
+            return {
+                "type": "animation",
+                "id": id,
+                "duration": duration / 1000,
+                "delay": delay / 1000,
+                "property": propname,
+                "keyframes": keyframes
+            };
+        }
+    }
+}
+
 function parsePositionProperty(layer) {
     var comp = layer.containingComp;
     var layerTransform = layer.property("ADBE Transform Group");
@@ -101,41 +137,6 @@ function parsePositionProperty(layer) {
             ];
         }
     });
-}
-
-function parseMarkerProperty(comp, prop, id, propname, callback) {
-    if (prop) {
-        var duration = 0;
-        var delay = undefined;
-        var keyframes = [];
-        for (var i = 0; i < prop.numKeys; i++) {
-            var keyTime = prop.keyTime(i + 1);
-            duration += keyTime;
-        }
-
-        for (var i = 0; i < prop.numKeys; i++) {
-            var keyTime = prop.keyTime(i + 1) / duration;
-            var keyValue = prop.keyValue(i + 1);
-
-            if ( delay === undefined ) {
-                delay = keyTime;
-            }
-            var frame = callback(i, keyTime, keyValue);
-            if (frame) {
-                keyframes.push(frame);
-            }
-        }
-        if (keyframes.length > 0) {
-            return {
-                "type": "animation",
-                "id": id,
-                "duration": duration,
-                "delay": delay == undefined ? 0 : delay,
-                "property": propname,
-                "keyframes": keyframes
-            };
-        }
-    }
 }
 
 function parseScaleProperty(layer) {
