@@ -69,7 +69,7 @@
 
 
                 group.initialValues = {};
-                group.initialValues.center = center;
+                //group.initialValues.center = center;
                 group.initialValues.size = {
                     width: rel(width, layer.width),
                     height: rel(height, layer.height)
