@@ -401,7 +401,7 @@
 
         group.initialValues.anchorPoint = {
             x: 0.0, // rel(anchor.x, comp.width),
-            y: 0.0  // rel(anchor.y, comp.height)
+            y: 1 // rel(anchor.y, comp.height)
         };
 
         group.initialValues.scale = getLayerScale(layer);
