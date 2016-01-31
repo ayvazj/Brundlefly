@@ -6,13 +6,24 @@ so that it can be rendered using the Brundlefly library for iOS and Android.
 It is inspired by and attempts to be compatible with the Butterfly file format
 used in Google mobile products (i.e.Google Photos).
 
-The following layer types/objects are supported:
 
-* Rectangle
-* Ellipse
-* Text
-* AVLayer for images
-* Animated transforms (layer only)
+## Limitations
+
+Keep the following limitations in mind while creating your After Effects animation:
+
+* Supported Layer Types:
+	* Shape Layer - Rectangle
+	* Shape Layer - Ellipse
+	* Text Later
+	* AVLayer for images only
+
+* Only one shape per layer
+
+* Only layer transformations are animated when exported
+
+* Parents must appear below children in the layer stack
+
+* Keep in mind your layers get exported as Views on iOS/Android.
 
 ## Download
 ### Export Script
