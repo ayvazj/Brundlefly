@@ -175,7 +175,22 @@ function clearConsole() {
 }
 
 function normalizeToId(str) {
-    return str.replace(/(\s+)/g, '-');
+    return str.replace(/(\s+)/g, '-')
+        .replace(/[^\x00-\x7F]/g, '_') // replace non-ascii (i.e. MS word ')
+        ;
+}
+
+function normalizeFilename(str) {
+    return str.replace(/(\s+)/g, '-')
+        .replace(/[^\x00-\x7F]/g, '_') // replace non-ascii (i.e. MS word ')
+        ;
+}
+
+function normalizeQuotes(str) {
+    return str
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+    ;
 }
 
 function rel(value, over) {

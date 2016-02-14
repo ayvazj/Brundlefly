@@ -1,5 +1,4 @@
 Section 1
 =========
 
-
-Text Layer alignment is buggy
+Remove non ascii characters from ids and filenames

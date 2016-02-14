@@ -35,12 +35,12 @@ Logger.prototype.debug = function (message) {
 };
 
 Logger.prototype.printprops = function (parent) {
-    this.log("\n\n>>>>>>>>>>");
+    //this.log("\n\n>>>>>>>>>>");
     for (var i = 1; i <= parent.numProperties; ++i) {
         var prop = parent.property(i);
         this.log(prop.matchName);
     }
-    this.log("<<<<<<<<<<\n\n");
+    //this.log("<<<<<<<<<<\n\n");
 };
 
 

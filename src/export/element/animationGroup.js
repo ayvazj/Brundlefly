@@ -367,8 +367,9 @@
             y: rel(position.y, comp.height)
         };
 
-        group.backgroundImage = "Images/" + source.file.name;
-        var destFile = new File(config.destdir + "/Images/" + source.file.name);
+        var normalizedFilename = normalizeFilename(decodeURIComponent(source.file.name));
+        group.backgroundImage = "Images/" + normalizedFilename;
+        var destFile = new File(config.destdir + "/Images/" + normalizedFilename);
         fs.copyFile(source.file, destFile);
 
         group.animations = getLayerAnimations(layer);
@@ -391,7 +392,7 @@
 
         var center = {"x": 0.0, "y": 0.0};
 
-        group.text = textDocument.value.text;
+        group.text = normalizeQuotes(textDocument.value.text);
         group.initialValues = {};
 
         //var anchor = {x: 0.5, y: 0.5};
@@ -460,7 +461,7 @@
             "b": textDocument.value.fillColor[2],
             "a": 1
         };
-        group.initialValues.fontSize = rel(textDocument.value.fontSize, comp.width);
+        group.initialValues.fontSize = rel(textDocument.value.fontSize * textDocument.value.verticalScale, comp.width);
 
         group.animations = getLayerAnimations(layer);
     }

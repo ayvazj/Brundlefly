@@ -657,7 +657,22 @@ function clearConsole() {
 }
 
 function normalizeToId(str) {
-    return str.replace(/(\s+)/g, '-');
+    return str.replace(/(\s+)/g, '-')
+        .replace(/[^\x00-\x7F]/g, '_') // replace non-ascii (i.e. MS word ')
+        ;
+}
+
+function normalizeFilename(str) {
+    return str.replace(/(\s+)/g, '-')
+        .replace(/[^\x00-\x7F]/g, '_') // replace non-ascii (i.e. MS word ')
+        ;
+}
+
+function normalizeQuotes(str) {
+    return str
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+    ;
 }
 
 function rel(value, over) {
@@ -858,12 +873,12 @@ Logger.prototype.debug = function (message) {
 };
 
 Logger.prototype.printprops = function (parent) {
-    this.log("\n\n>>>>>>>>>>");
+    //this.log("\n\n>>>>>>>>>>");
     for (var i = 1; i <= parent.numProperties; ++i) {
         var prop = parent.property(i);
         this.log(prop.matchName);
     }
-    this.log("<<<<<<<<<<\n\n");
+    //this.log("<<<<<<<<<<\n\n");
 };
 
 
@@ -7313,8 +7328,9 @@ function getAnimationGroup(config, layer, animations) {
             y: rel(position.y, comp.height)
         };
 
-        group.backgroundImage = "Images/" + source.file.name;
-        var destFile = new File(config.destdir + "/Images/" + source.file.name);
+        var normalizedFilename = normalizeFilename(decodeURIComponent(source.file.name));
+        group.backgroundImage = "Images/" + normalizedFilename;
+        var destFile = new File(config.destdir + "/Images/" + normalizedFilename);
         fs.copyFile(source.file, destFile);
 
         group.animations = getLayerAnimations(layer);
@@ -7337,7 +7353,7 @@ function getAnimationGroup(config, layer, animations) {
 
         var center = {"x": 0.0, "y": 0.0};
 
-        group.text = textDocument.value.text;
+        group.text = normalizeQuotes(textDocument.value.text);
         group.initialValues = {};
 
         //var anchor = {x: 0.5, y: 0.5};
@@ -7406,7 +7422,7 @@ function getAnimationGroup(config, layer, animations) {
             "b": textDocument.value.fillColor[2],
             "a": 1
         };
-        group.initialValues.fontSize = rel(textDocument.value.fontSize, comp.width);
+        group.initialValues.fontSize = rel(textDocument.value.fontSize * textDocument.value.verticalScale, comp.width);
 
         group.animations = getLayerAnimations(layer);
     }
