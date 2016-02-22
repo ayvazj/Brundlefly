@@ -372,6 +372,10 @@
         var destFile = new File(config.destdir + "/Images/" + normalizedFilename);
         fs.copyFile(source.file, destFile);
 
+        if (layer.audioEnabled === false) {
+            group.audioEnabled = false;
+        }
+
         group.animations = getLayerAnimations(layer);
     }
 
@@ -465,10 +469,6 @@
 
         group.animations = getLayerAnimations(layer);
     }
-
-
-
-
 
 
 }
