@@ -6,6 +6,9 @@ so that it can be rendered using the Brundlefly library for iOS and Android.
 It is inspired by and attempts to be compatible with the Butterfly file format
 used in Google mobile products (i.e.Google Photos).
 
+## Donations
+
+<a href='https://pledgie.com/campaigns/31175'><img alt='Click here to lend your support to: Adobe After Effects and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/31175.png?skin_name=chrome' border='0' ></a>
 
 ## Limitations
 
