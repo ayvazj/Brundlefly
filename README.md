@@ -8,6 +8,8 @@ used in Google mobile products (i.e.Google Photos).
 
 ## Donations
 
+Help me pay my Adobe bill so I can continue to work on this project.
+
 <a href='https://pledgie.com/campaigns/31175'><img alt='Click here to lend your support to: Adobe After Effects and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/31175.png?skin_name=chrome' border='0' ></a>
 
 ## Limitations
